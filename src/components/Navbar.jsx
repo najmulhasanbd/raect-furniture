@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { CiShoppingBasket } from "react-icons/ci";
 import { FaBars, FaTimes } from "react-icons/fa";
@@ -31,13 +32,32 @@ const NavItems = ({ toggleMenu }) => {
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.addEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition duration-300 ease-in-out text-white">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition duration-300 ease-in-out ${
+        isScrolled ? "bg-white shadow-md" : "bg-transparent text-white"
+      }`}
+    >
       <nav className="flex mx-auto justify-between py-4 px-6 container max-w-screen-2xl items-center">
         <Link to="/">Logo</Link>
 
@@ -53,8 +73,9 @@ const Navbar = () => {
         </div>
 
         <div
-          className={`fixed top-0 left-0 w-full h-screen bg-black opacity-50 flex flex-col items-center justify-center space-y-6 text-white transition-transform transform ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
-            } md:hidden `}
+          className={`fixed top-0 left-0 w-full h-screen bg-black opacity-80 flex flex-col items-center justify-center space-y-6 text-white transition-transform transform ${
+            isMenuOpen ? "translate-x-0" : "-translate-x-full"
+          } md:hidden `}
         >
           <div
             className="absolute top-4 right-4 text-xl cursor-pointer"
