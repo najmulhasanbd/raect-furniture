@@ -4,7 +4,11 @@ import { FaSearch } from 'react-icons/fa'
 
 const Hero = () => {
     return (
-        <section className='h-screen relative bg-cover bg-center text-white' style={{ background: `url(${banner})` }}>
+        <section className='h-screen relative bg-center w-full bg-no-repeat text-white'
+            style={{
+                background: `url(${banner})`,
+                backgroundSize: 'cover',
+            }}>
             <div className='md:pt-48 px-4 pt-24 text-center space-y-6 md:w-1/2 mx-auto'>
                 <h1 className='text-3xl  text-white lg:text-6xl font-medium leading-tight'>Make your interior more minimalistic & modern</h1>
                 <p>Turn your room with panto into a lot more minimalist and modern with ease and speed</p>
@@ -15,7 +19,7 @@ const Hero = () => {
                         <FaSearch />
                     </div>
                 </form>
-
+                <div className='absolute inset-x-0 bottom-0 h-3/4 -mb-2 bg-gradient-to-t from-white via-transparent to-transparent blur-sm'></div>
             </div>
         </section>
     )
