@@ -37,7 +37,7 @@ const Navbar = () => {
   };
 
   return (
-    <header>
+    <header className="fixed top-0 left-0 right-0 z-50 transition duration-300 ease-in-out text-white">
       <nav className="flex mx-auto justify-between py-4 px-6 container max-w-screen-2xl items-center">
         <Link to="/">Logo</Link>
 
@@ -53,9 +53,8 @@ const Navbar = () => {
         </div>
 
         <div
-          className={`fixed top-0 left-0 w-full h-screen bg-black opacity-50 flex flex-col items-center justify-center space-y-6 text-white transition-transform transform ${
-            isMenuOpen ? "translate-x-0" : "-translate-x-full"
-          } md:hidden `}
+          className={`fixed top-0 left-0 w-full h-screen bg-black opacity-50 flex flex-col items-center justify-center space-y-6 text-white transition-transform transform ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
+            } md:hidden `}
         >
           <div
             className="absolute top-4 right-4 text-xl cursor-pointer"
