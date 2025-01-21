@@ -11,7 +11,7 @@ const Shop = () => {
           background: `url(${banner})`,
           backgroundSize: "cover",
         }}
-      ><h1 className="text-4xl font-bold text-center">Shop Our Products</h1></div>
+      ><h1 className="text-4xl font-bold text- text-white">Shop Our Products</h1></div>
       <Products title="What's Your Choise US" />
     </section>
   );
